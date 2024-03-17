@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import sun from '../Assets/sun.png'
-import { FaWeight } from 'react-icons/fa';
+import SearchHistory from '../Search/Search-history';
 
-const WeatherInfo = ({ weather, error }) => {
+
+const WeatherInfo = ({ weather, error,searchHistory, onSearch, onDelete }) => {
     const [dateTime, setDateTime] = useState(new Date());
     useEffect(() => {
         const interval = setInterval(() => {
@@ -30,7 +30,11 @@ const WeatherInfo = ({ weather, error }) => {
      <p  className='inline'>Humidity: {weather.main.humidity}%</p>
      <p  className='inline'>{weather.weather[0].description}</p>
     </div>
-
+    <SearchHistory
+        searchHistory={searchHistory}
+        onSearch={onSearch}
+        onDelete={onDelete}
+      />
      
     </div>
   );
