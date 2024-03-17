@@ -1,5 +1,5 @@
 import React, { useState} from "react";
-import './Search-bar.css' ;
+import '../../App.css' ;
 import { FaSearch } from "react-icons/fa";
 
 const Searchbar = ({onSearch}) => {
@@ -11,7 +11,7 @@ const Searchbar = ({onSearch}) => {
     };
 return (
    <div className="container">
-        <form className="top-bar">
+        <form className="top-bar" onSubmit={handleSearch}>
             <input type="text" 
             className="cityInput" 
             placeholder ="Search for City or Country"
@@ -21,7 +21,7 @@ return (
             <button type="submit" className="searchIcon"><FaSearch/>
                 </button> 
                
-               
+
         </form> 
         
     </div>
@@ -30,4 +30,4 @@ return (
 
 };
 
-export default Searchbar
+export default Searchbar;
