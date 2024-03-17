@@ -21,10 +21,9 @@ return (
             <button type="submit" className="searchIcon"><FaSearch/>
                 </button> 
                
+               
         </form> 
-        {/* <div className="main-body">
-
-        </div> */}
+        
     </div>
   
 );
