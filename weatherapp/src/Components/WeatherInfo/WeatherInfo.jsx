@@ -4,21 +4,28 @@ import SearchHistory from '../Search/Search-history';
 
 const WeatherInfo = ({ weather, error,searchHistory, onSearch, onDelete, theme }) => {
     const [dateTime, setDateTime] = useState(new Date());
+    const weatherDescription = weather?.weather[0]?.description;
+
     useEffect(() => {
         const interval = setInterval(() => {
             setDateTime(new Date());
-        }, 1000); // Update every second
+        }, 1000); 
 
-        return () => clearInterval(interval); // Clean up the interval on unmount
+        return () => clearInterval(interval); 
     }, []);
   if (error) {
-    return <p>{error}</p>;
+    return <p className={`error-message ${theme}`}>{error}</p>;
   }
 
   if (!weather || !weather.weather || weather.weather.length === 0) {
     return null;
   }
-
+  const toCamelCase = (str) => {
+    return str.toLowerCase().replace(/(?:^|\s|-)\w/g, function(match) {
+        return match.toUpperCase();
+    }).replace(/\s+/g, '').replace(/(?<=\w)(?=[A-Z])/g, ' ');
+};
+    const camelCaseDscription= toCamelCase(weatherDescription);
 
   return (
 
@@ -30,7 +37,7 @@ const WeatherInfo = ({ weather, error,searchHistory, onSearch, onDelete, theme }
      <p className={`inline ${theme} bold`}> {weather.name}, {weather.sys.country}</p>
      <p  className={`inline ${theme}`}>{dateTime.toLocaleString()}</p>
      <p  className={`inline ${theme}`}>Humidity: {weather.main.humidity}%</p>
-     <p  className={`inline ${theme}`}>{weather.weather[0].description}</p>
+     <p  className={`inline ${theme}`}>{camelCaseDscription}</p>
     </div>
     <SearchHistory
         searchHistory={searchHistory}
