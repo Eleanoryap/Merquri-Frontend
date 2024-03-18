@@ -1,0 +1,11 @@
+Assumptions:
+
+Font,Color
+High Temperature is Max
+Low Temperature is Min
+Newest search record is at the top of the search history list
+date and time is local time
+
+using AXIOS library to fetch the weather information from the API
+The axios.get method is used to send a GET request to the API endpoint, and the response data is used to update the state (setWeather) with the fetched weather information.
+
