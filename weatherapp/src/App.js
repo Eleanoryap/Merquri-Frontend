@@ -20,8 +20,8 @@ const App = () => {
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
- // Toggle theme class on body
- document.body.classList.toggle('dark-theme', newTheme === 'dark');  
+
+    document.body.classList.toggle('dark-theme', newTheme === 'dark');  
   };
 
   const fetchWeather = async (searchTerm) => {
@@ -63,15 +63,12 @@ const App = () => {
    
     <div  className='app'> 
     <div className='container'>
-    {/* <div  className='app'> */}
-
+   
       <div className='header'> 
       <h1>{headerText}</h1> 
-      <button className={`theme-toggle ${theme}`} onClick={toggleTheme}><WiMoonAltThirdQuarter /></button>
+        <button className={`theme-toggle ${theme}`} onClick={toggleTheme}><WiMoonAltThirdQuarter /></button>
       </div>
       <Searchbar onSearch={fetchWeather} theme ={theme} />
-      {/* <Searchbar onSearch={fetchWeather}/> */}
-
       {showWeatherIcon && <img className='weather-icon' src={sun} alt="Weather Icon"></img>}
       <WeatherInfo
         weather={weather}

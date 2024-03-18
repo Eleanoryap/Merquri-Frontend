@@ -7,16 +7,13 @@ const SearchHistory = ({ searchHistory, onSearch, onDelete,theme }) => {
     const [listHeight, setListHeight] = useState(200); 
     useEffect(() => {
         const handleResize = () => {
-          // Update the height of the list container based on the window height
           const windowHeight = window.innerHeight;
-          setListHeight(windowHeight - 500); // Set a margin from the bottom of the window
+          setListHeight(windowHeight - 500); 
         };
     
-        // Call handleResize initially and add a resize event listener
         handleResize();
         window.addEventListener('resize', handleResize);
     
-        // Remove the resize event listener when the component unmounts
         return () => {
           window.removeEventListener('resize', handleResize);
         };
